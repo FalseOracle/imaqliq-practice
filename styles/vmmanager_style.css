@@ -1,8 +1,8 @@
-/* Общие стили для body */
+
 * {
     font-family: Candara;
 }
-
+/* Общие стили для body */
 body {
     display: flex;
     justify-content: center;
@@ -13,6 +13,9 @@ body {
     padding: 0;
     overflow-x: hidden;
 }
+/* Стиль кнопок */
+
+
 
 /* Стили для контейнера с кнопками */
 .vm_buttons {
@@ -23,7 +26,7 @@ body {
     box-shadow: 0 0 10px rgba(2, 1, 3, 0.4);
     margin-bottom: 20px; 
 }
-
+/* Кнопки которые будут добавленны потом */
 .extras_buttons{
     align-items: center;
     text-align: center;
@@ -31,13 +34,17 @@ body {
     padding: 50px;
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-    margin-bottom: 20px; 
+    margin-bottom: 20px; /* Add margin at the bottom */
+}
 
-/* Заголовок */
+/* Просто заголовок */
 h1 {
     width: 100%;
     margin-bottom: 20px;
 }
+/* Основные кнопки посередине */
+
+
 
 /* Контейнер для кнопок */
 .button-container {
@@ -71,6 +78,10 @@ h1 {
     transform: scale(1.055);
 }
 
+/* Стили боковой панели */
+
+
+
 /* Стили для боковой панели */
 .sidebar {
     height: 100%;
@@ -99,13 +110,14 @@ h1 {
     transition: background-color 0.3s;
 }
 
-
 /* Стили для ссылок в боковой панели при наведении */
 .sidebar a:hover {
     background-color: #0860bd;
 }
+/* Стили для пунктов меню */
 
-/* Общие стили для пунктов меню */
+
+
 .menu-item {
     margin-bottom: 20px;
     position: relative;
@@ -119,8 +131,11 @@ h1 {
 .menu-item img {
     margin-right: 10px;
 }
+/* Подменю */
 
-/* Стили для подменю */
+
+
+
 .menu-item:hover a {
     background-color: #0860bd;
     border-radius: 0;
@@ -136,7 +151,10 @@ h1 {
     visibility: visible;
 }
 
-/* Стили для кнопки бургера */
+/* Стили для кнопки которая открывает меню */
+
+
+
 .burger-menu {
     position: absolute;
     top: 15px;
@@ -152,6 +170,9 @@ h1 {
 }
 
 /* Стили для подменю */
+
+
+
 .submenu {
     position: absolute;
     top: 100%; 
