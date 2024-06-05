@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/login_style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход и Регистрация</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #e9ecef;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            border-radius: 25px;
+        }
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="password"] {
+            font-family: 'password';
+        }
+        .form-group a {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .form-group a:hover {
+            text-decoration: underline;
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .toggle-button {
+            background-color: transparent;
+            color: #007BFF;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            width: 50%;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: -1px;
+        }
+        .toggle-button:hover {
+            text-decoration: underline;
+        }
+        .toggle-button.active {
+            color: #000;
+        }
+        .tab-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .tab-container button {
+            width: 50%;
+            border: none;
+            border-bottom: 2px solid transparent;
+        }
+        .tab-container button.active {
+            border-bottom-color: #007BFF;
+        }
+        /* Измененные стили */
+        .form-group.checkbox {
+            display: flex;
+            align-items: center;
+        }
+        .form-group.checkbox label {
+            margin-right: 20px; /* Добавлено для отступа */
+        }
+        .form-group.checkbox label:first-child {
+            margin-right: 0; /* Убираем отступ у первого label в .form-group.checkbox */
+        }
+        .login-container { /* Добавленный стиль */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+   
+   
+</head>
+<body>
+    
+    <div class="container" id="loginContainer">
+
+        <div class="tab-container">
+            <button class="toggle-button active" id="toLoginBtn">Вход</button>
+            <button class="toggle-button" id="toRegisterBtn">Регистрация</button>
+        </div>
+
+        <h2>Вход</h2>
+        <div class="form-group">
+            <label for="email">Почта:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group checkbox">
+            <label for="rememberMe">Запомнить меня</label> <!-- Перемещено слева от чекбокса -->
+            <input type="checkbox" id="rememberMe" name="rememberMe">
+        </div>
+        <button class="btn" id="loginBtn">Войти</button>
+        <div class="form-group">
+            <a href="#">Забыли пароль?</a>
+        </div>
+    </div>
+
+    <div class="container" style="display:none;" id="registerContainer">
+
+        <div class="tab-container">
+            <button class="toggle-button" id="toLoginBtn">Вход</button>
+            <button class="toggle-button active" id="toRegisterBtn">Регистрация</button>
+        </div>
+
+        <h2>Регистрация</h2>
+        <div class="form-group">
+            <label for="firstName">Имя:</label>
+            <input type="text" id="firstName" name="firstName" required>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Фамилия:</label>
+            <input type="text" id="lastName" name="lastName" required>
+        </div>
+
+        <div class="form-group">
+            <label for="regEmail">Почта:</label>
+            <input type="email" id="regEmail" name="regEmail" required>
+        </div>
+
+        <div class="form-group">
+            <label for="regPassword">Пароль:</label>
+            <input type="password" id="regPassword" name="regPassword" required>
+        </div>
+
+        <div class="form-group">
+            <label for="confirmPassword">Подтвердите пароль:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+        </div>
+
+        <button class="btn" id="registerBtn">Зарегистрироваться</button>
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const tabButtons = document.querySelectorAll('.toggle-button');
+            const loginContainer = document.getElementById('loginContainer');
+            const registerContainer = document.getElementById('registerContainer');
+            
+            // Устанавливаем класс 'active' только для одной кнопки
+            tabButtons.forEach(button => {
+                if (button.classList.contains('active')) {
+                    button.classList.remove('active');
+                }
+            });
+            document.getElementById('toLoginBtn').classList.add('active');
+    
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    if (button.id === 'toLoginBtn') {
+                        loginContainer.style.display = 'block';
+                        registerContainer.style.display = 'none';
+                    } else {
+                        loginContainer.style.display = 'none';
+                        registerContainer.style.display = 'block';
+                    }
+    
+                    tabButtons.forEach(btn => {
+                        if (btn.id === button.id) {
+                            btn.classList.add('active');
+                        } else {
+                            btn.classList.remove('active');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+/* Общие стили для body */
+body {
+    font-family: Candara;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    margin: 0;
+    background-color: #e9ecef;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Стили для контейнера с кнопками */
+.vm_buttons {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Заголовок */
+h1 {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Контейнер для кнопок */
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Стили для кнопок */
+.button {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: calc(20% - 10px); /* 20% width for each button with 10px gap */
+    height: 120px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007BFF;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.5s, transform 0.3s;
+}
+
+/* Стили для кнопок при наведении */
+.button:hover {
+    background-color: #0860bd;
+    transform: scale(1.05);
+}
+
+/* Стили для боковой панели */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #2788ef;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: width 0.3s ease;
+}
+
+/* Стили для открытой боковой панели */
+.sidebar.open {
+    width: 300px;
+}
+
+/* Стили для ссылок в боковой панели */
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #ffffff;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+/* Стили для ссылок в боковой панели при наведении */
+.sidebar a:hover {
+    background-color: #0860bd;
+}
+
+/* Общие стили для пунктов меню */
+.menu-item {
+    margin-bottom: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+}
+
+/* Стили для изображений в пунктах меню */
+.menu-item img {
+    margin-right: 10px;
+}
+
+/* Стили для подменю */
+.menu-item:hover a {
+    background-color: #0860bd;
+    border-radius: 0;
+}
+
+/* Стили для открытого подменю */
+.menu-item:hover .submenu {
+    max-height: 300px;
+    opacity: 1;
+    visibility: visible;
+    top: 100%;
+}
+
+/* Стили для кнопки бургера */
+.burger-menu {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+/* Стили для изображения в кнопке бургера */
+.burger-menu img {
+    width: 30px;
+    height: 30px;
+}
+
+/* Стили для подменю */
+.submenu {
+    display: block;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    background-color: #2788ef;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, top 0.3s ease-in-out;
+}
+
+/* Стили для ссылок в подменю */
+.submenu a {
+    font-size: 16px;
+    color: #ffffff;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Стили для ссылок в подменю при наведении */
+.submenu a:hover {
+    background-color: #0860bd;
+    transform: translateX(10px);
+}

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Настройки цвета</title>
+<link rel="stylesheet" href="styles/settings_style.css">
+</head>
+
+<style>
+
+body {
+  font-family: Arial, sans-serif;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  color: #000;
+}
+
+.container {
+  max-width: 800px;
+  padding: 20px;
+}
+
+.sections {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.section {
+  flex: 0 0 calc(33.33% - 20px);
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.section h3 {
+  margin-top: 0;
+}
+
+.color-option {
+  margin-bottom: 20px;
+}
+
+.color-option label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.color-option input[type="color"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+</style>
+
+
+<body>
+
+<div class="container">
+  <h2>Настройки цвета</h2>
+  <div class="section" id="vmmanager">
+    <h3>Управление виртуальными машинами</h3>
+    <div class="color-option">
+      <label for="vmBgColor">Фон:</label>
+      <input type="color" id="vmBgColor">
+    </div>
+
+    <div class="color-option">
+      <label for="vmTextColor">Текст:</label>
+      <input type="color" id="vmTextColor">
+    </div>
+
+    <div class="color-option">
+      <label for="vmButtonColor">Кнопки:</label>
+      <input type="color" id="vmButtonColor">
+    </div>
+
+  </div>
+  <div class="section" id="virtualboxes">
+    <h3>Виртуальные машины</h3>
+    <div class="color-option">
+      <label for="vbBgColor">Фон:</label>
+      <input type="color" id="vbBgColor">
+    </div>
+
+    <div class="color-option">
+      <label for="vbTextColor">Текст:</label>
+      <input type="color" id="vbTextColor">
+    </div>
+
+    <div class="color-option">
+      <label for="vbButtonColor">Кнопки:</label>
+      <input type="color" id="vbButtonColor">
+    </div>
+
+  </div>
+  <div class="section" id="nodes">
+    <h3>Узлы</h3>
+    <div class="color-option">
+      <label for="nodesBgColor">Фон:</label>
+      <input type="color" id="nodesBgColor">
+    </div>
+
+    <div class="color-option">
+      <label for="nodesTextColor">Текст:</label>
+      <input type="color" id="nodesTextColor">
+    </div>
+    <div class="color-option">
+      <label for="nodesButtonColor">Кнопки:</label>
+      <input type="color" id="nodesButtonColor">
+    </div>
+
+  </div>
+  <!-- Add similar sections for other categories -->
+  <div class="section" id="network">
+    <h3>Сети</h3>
+    <div class="color-option">
+      <label for="networkBgColor">Фон:</label>
+      <input type="color" id="networkBgColor">
+    </div>
+
+    <div class="color-option">
+      <label for="networkTextColor">Текст:</label>
+      <input type="color" id="networkTextColor">
+    </div>
+
+    <div class="color-option">
+      <label for="networkButtonColor">Кнопки:</label>
+      <input type="color" id="networkButtonColor">
+    </div>
+
+  </div>
+  <div class="section" id="clusters">
+    <h3>Кластеры</h3>
+    <div class="color-option">
+      <label for="clustersBgColor">Фон:</label>
+      <input type="color" id="clustersBgColor">
+    </div>
+
+    <div class="color-option">
+      <label for="clustersTextColor">Текст:</label>
+      <input type="color" id="clustersTextColor">
+    </div>
+    <div class="color-option">
+      <label for="clustersButtonColor">Кнопки:</label>
+      <input type="color" id="clustersButtonColor">
+    </div>
+
+  </div>
+  <div class="section" id="scripts">
+    <h3>Скрипты</h3>
+    <div class="color-option">
+      <label for="scriptsBgColor">Фон:</label>
+      <input type="color" id="scriptsBgColor">
+    </div>
+
+    <div class="color-option">
+      <label for="scriptsTextColor">Текст:</label>
+      <input type="color" id="scriptsTextColor">
+    </div>
+
+    <div class="color-option">
+      <label for="scriptsButtonColor">Кнопки:</label>
+      <input type="color" id="scriptsButtonColor">
+    </div>
+
+  </div>
+  <div class="section" id="backups">
+    <h3>Резервные копии</h3>
+    <div class="color-option">
+      <label for="backupsBgColor">Фон:</label>
+      <input type="color" id="backupsBgColor">
+    </div>
+
+    <div class="color-option">
+      <label for="backupsTextColor">Текст:</label>
+      <input type="color" id="backupsTextColor">
+    </div>
+
+    <div class="color-option">
+      <label for="backupsButtonColor">Кнопки:</label>
+      <input type="color" id="backupsButtonColor">
+    </div>
+
+  </div>
+  <div class="section" id="settings">
+    <h3>Настройки</h3>
+    <div class="color-option">
+      <label for="settingsBgColor">Фон:</label>
+      <input type="color" id="settingsBgColor">
+    </div>
+
+    <div class="color-option">
+      <label for="settingsTextColor">Текст:</label>
+      <input type="color" id="settingsTextColor">
+    </div>
+    <div class="color-option">
+      <label for="settingsButtonColor">Кнопки:</label>
+      <input type="color" id="settingsButtonColor">
+    </div>
+
+  </div>
+  <div class="section" id="privateoffice">
+    <h3>Личный кабинет</h3>
+    <div class="color-option">
+      <label for="privateofficeBgColor">Фон:</label>
+      <input type="color" id="privateofficeBgColor">
+    </div>
+
+    <div class="color-option">
+      <label for="privateofficeTextColor">Текст:</label>
+      <input type="color" id="privateofficeTextColor">
+    </div>
+
+    <div class="color-option">
+      <label for="privateofficeButtonColor">Кнопки:</label>
+      <input type="color" id="privateofficeButtonColor">
+    </div>
+
+  </div>
+
+  <button id="saveButton">Примениить измнения</button>
+  <button id="resetButton">Сбросить цвета</button>
+
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+
+    const colorInputs = [
+      { inputId: 'vmBgColor', storageKey: 'vmBgColor' },
+      { inputId: 'vmTextColor', storageKey: 'vmTextColor' },
+      { inputId: 'vmButtonColor', storageKey: 'vmButtonColor' },
+      // Add other color inputs here
+    ];
+
+    colorInputs.forEach(({ inputId, storageKey }) => {
+      const inputElement = document.getElementById(inputId);
+      const savedColor = localStorage.getItem(storageKey);
+      if (savedColor) {
+        inputElement.value = savedColor;
+        applyColor(inputId, savedColor);
+      }
+      inputElement.addEventListener('input', function() {
+        applyColor(inputId, this.value);
+      });
+    });
+
+    function applyColor(inputId, color) {
+      const bodyStyle = document.body.style;
+      switch (inputId) {
+        case 'vmBgColor':
+        case 'vbBgColor':
+        case 'nodesBgColor':
+        // Add other cases for background color inputs
+          bodyStyle.backgroundColor = color;
+          break;
+        case 'vmTextColor':
+        case 'vbTextColor':
+        case 'nodesTextColor':
+        // Add other cases for text color inputs
+          bodyStyle.color = color;
+          break;
+        case 'vmButtonColor':
+        case 'vbButtonColor':
+        case 'nodesButtonColor':
+        // Add other cases for button color inputs
+          const buttons = document.querySelectorAll('button');
+          buttons.forEach(button => {
+            button.style.backgroundColor = color;
+          });
+          break;
+      }
+    }
+
+    const saveButton = document.getElementById('saveButton');
+    saveButton.addEventListener('click', function() {
+      colorInputs.forEach(({ inputId, storageKey }) => {
+        const inputElement = document.getElementById(inputId);
+        localStorage.setItem(storageKey, inputElement.value);
+      });
+      alert('Настройки сохранены!');
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
+      const bgColorInput = section.querySelector('.color-option input[type="color"]');
+      const textColorInput = section.querySelector('.color-option:nth-child(2) input[type="color"]');
+      const buttonColorInput = section.querySelector('.color-option:nth-child(3) input[type="color"]');
+      const saveButton = section.querySelector('.saveButton');
+      const resetButton = section.querySelector('.resetButton');
+
+      const sectionId = section.getAttribute('id');
+
+      const savedBgColor = localStorage.getItem(`${sectionId}BgColor`);
+      const savedTextColor = localStorage.getItem(`${sectionId}TextColor`);
+      const savedButtonColor = localStorage.getItem(`${sectionId}ButtonColor`);
+
+      if (savedBgColor) {
+        bgColorInput.value = savedBgColor;
+        applyColor(bgColorInput, savedBgColor);
+      }
+      if (savedTextColor) {
+        textColorInput.value = savedTextColor;
+        applyColor(textColorInput, savedTextColor);
+      }
+      if (savedButtonColor) {
+        buttonColorInput.value = savedButtonColor;
+        applyColor(buttonColorInput, savedButtonColor);
+      }
+
+      bgColorInput.addEventListener('input', function() {
+        applyColor(bgColorInput, this.value);
+      });
+
+      textColorInput.addEventListener('input', function() {
+        applyColor(textColorInput, this.value);
+      });
+
+      buttonColorInput.addEventListener('input', function() {
+        applyColor(buttonColorInput, this.value);
+      });
+
+      saveButton.addEventListener('click', function() {
+        localStorage.setItem(`${sectionId}BgColor`, bgColorInput.value);
+        localStorage.setItem(`${sectionId}TextColor`, textColorInput.value);
+        localStorage.setItem(`${sectionId}ButtonColor`, buttonColorInput.value);
+        alert('Настройки сохранены!');
+      });
+
+      resetButton.addEventListener('click', function() {
+        localStorage.removeItem(`${sectionId}BgColor`);
+        localStorage.removeItem(`${sectionId}TextColor`);
+        localStorage.removeItem(`${sectionId}ButtonColor`);
+
+        localStorage.setItem(`${sectionId}BgColor`, '#ffffff');
+        localStorage.setItem(`${sectionId}TextColor`, '#000');
+        localStorage.setItem(`${sectionId}ButtonColor`, '#007BFF');
+
+        bgColorInput.value = '#ffffff';
+        textColorInput.value = '#000';
+        buttonColorInput.value = '#007BFF';
+
+        resetButton.classList.add('reset-animation');
+        setTimeout(() => {
+          resetButton.classList.remove('reset-animation');
+        }, 1000);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
