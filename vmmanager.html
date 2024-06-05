@@ -171,12 +171,11 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Загрузка сохраненных цветов
+
         const savedBgColor = localStorage.getItem('vmBgColor');
         const savedTextColor = localStorage.getItem('vmTextColor');
         const savedButtonColor = localStorage.getItem('vmButtonColor');
 
-        // Применение сохраненных цветов
         if (savedBgColor) {
             document.body.style.backgroundColor = savedBgColor;
         }
@@ -193,7 +192,7 @@
 
 </script>
 <script>
-    /* Изменение функции toggleSidebar */
+
 function toggleSidebar() {
     var sidebar = document.getElementById("mySidebar");
     sidebar.classList.toggle('open');
