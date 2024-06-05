@@ -270,16 +270,16 @@ button:hover {
       const savedColor = localStorage.getItem(storageKey);
       if (savedColor) {
         inputElement.value = savedColor;
-        applyColor(inputId, savedColor);
+        applyColor(inputElement, savedColor);
       }
       inputElement.addEventListener('input', function() {
-        applyColor(inputId, this.value);
+        applyColor(this, this.value);
       });
     });
 
-    function applyColor(inputId, color) {
+    function applyColor(inputElement, color) {
       const bodyStyle = document.body.style;
-      switch (inputId) {
+      switch (inputElement.id) {
         case 'vmBgColor':
         case 'vbBgColor':
         case 'nodesBgColor':
@@ -301,10 +301,13 @@ button:hover {
             button.style.backgroundColor = color;
           });
           break;
+        // Add cases for other color inputs
       }
     }
 
     const saveButton = document.getElementById('saveButton');
+    const resetButton = document.getElementById('resetButton');
+
     saveButton.addEventListener('click', function() {
       colorInputs.forEach(({ inputId, storageKey }) => {
         const inputElement = document.getElementById(inputId);
@@ -312,76 +315,30 @@ button:hover {
       });
       alert('Настройки сохранены!');
     });
-  });
-</script>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => {
-      const bgColorInput = section.querySelector('.color-option input[type="color"]');
-      const textColorInput = section.querySelector('.color-option:nth-child(2) input[type="color"]');
-      const buttonColorInput = section.querySelector('.color-option:nth-child(3) input[type="color"]');
-      const saveButton = section.querySelector('.saveButton');
-      const resetButton = section.querySelector('.resetButton');
-
-      const sectionId = section.getAttribute('id');
-
-      const savedBgColor = localStorage.getItem(`${sectionId}BgColor`);
-      const savedTextColor = localStorage.getItem(`${sectionId}TextColor`);
-      const savedButtonColor = localStorage.getItem(`${sectionId}ButtonColor`);
-
-      if (savedBgColor) {
-        bgColorInput.value = savedBgColor;
-        applyColor(bgColorInput, savedBgColor);
-      }
-      if (savedTextColor) {
-        textColorInput.value = savedTextColor;
-        applyColor(textColorInput, savedTextColor);
-      }
-      if (savedButtonColor) {
-        buttonColorInput.value = savedButtonColor;
-        applyColor(buttonColorInput, savedButtonColor);
-      }
-
-      bgColorInput.addEventListener('input', function() {
-        applyColor(bgColorInput, this.value);
+    resetButton.addEventListener('click', function() {
+      colorInputs.forEach(({ inputId, storageKey }) => {
+        localStorage.removeItem(storageKey);
       });
 
-      textColorInput.addEventListener('input', function() {
-        applyColor(textColorInput, this.value);
+      const defaultColors = {
+        '#ffffff': ['BgColor', 'TextColor'],
+        '#007BFF': ['ButtonColor']
+      };
+
+      colorInputs.forEach(({ inputId }) => {
+        const inputElement = document.getElementById(inputId);
+        const defaultValue = defaultColors[inputId] || '#ffffff';
+        inputElement.value = defaultValue;
+        applyColor(inputElement, defaultValue);
       });
 
-      buttonColorInput.addEventListener('input', function() {
-        applyColor(buttonColorInput, this.value);
-      });
-
-      saveButton.addEventListener('click', function() {
-        localStorage.setItem(`${sectionId}BgColor`, bgColorInput.value);
-        localStorage.setItem(`${sectionId}TextColor`, textColorInput.value);
-        localStorage.setItem(`${sectionId}ButtonColor`, buttonColorInput.value);
-        alert('Настройки сохранены!');
-      });
-
-      resetButton.addEventListener('click', function() {
-        localStorage.removeItem(`${sectionId}BgColor`);
-        localStorage.removeItem(`${sectionId}TextColor`);
-        localStorage.removeItem(`${sectionId}ButtonColor`);
-
-        localStorage.setItem(`${sectionId}BgColor`, '#ffffff');
-        localStorage.setItem(`${sectionId}TextColor`, '#000');
-        localStorage.setItem(`${sectionId}ButtonColor`, '#007BFF');
-
-        bgColorInput.value = '#ffffff';
-        textColorInput.value = '#000';
-        buttonColorInput.value = '#007BFF';
-
-        resetButton.classList.add('reset-animation');
-        setTimeout(() => {
-          resetButton.classList.remove('reset-animation');
-        }, 1000);
-      });
+      resetButton.classList.add('reset-animation');
+      setTimeout(() => {
+        resetButton.classList.remove('reset-animation');
+      }, 1000);
     });
+
   });
 </script>
 

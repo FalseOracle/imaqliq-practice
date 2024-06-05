@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Пример кнопок</title>
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
+</head>
+<body>
+
+<button id="btn1" onclick="showSecond()">Баллала</button>
+<button id="btn2" onclick="showThird()" class="hidden">Переход</button>
+<button id="btn3" onclick="sayHello()" class="hidden">Привет</button>
+
+<script>
+    function showSecond() {
+        document.getElementById('btn2').classList.remove('hidden');
+        document.getElementById('btn1').classList.add('hidden');
+    }
+
+    function showThird() {
+        document.getElementById('btn3').classList.remove('hidden');
+        document.getElementById('btn2').classList.add('hidden');
+    }
+
+    function sayHello() {
+        alert('Привет!');
+    }
+</script>
+
+</body>
+</html>

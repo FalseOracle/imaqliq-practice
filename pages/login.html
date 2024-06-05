@@ -41,6 +41,13 @@
         .form-group input[type="password"] {
             font-family: 'password';
         }
+        .form-group input[type="checkbox"] {
+            display: inline-block;
+        }
+        .form-group label[for="rememberMe"] {
+            display: inline-block;
+            margin-left: 5px;
+        }
         .form-group a {
             display: block;
             margin-top: 10px;
@@ -69,7 +76,7 @@
             border: none;
             padding: 10px;
             cursor: pointer;
-            width: 50%;
+            width: 33.33%;
             border-radius: 10px 10px 0 0;
             margin-bottom: -1px;
         }
@@ -84,31 +91,14 @@
             justify-content: space-between;
         }
         .tab-container button {
-            width: 50%;
+            width: 33.33%;
             border: none;
             border-bottom: 2px solid transparent;
         }
         .tab-container button.active {
             border-bottom-color: #007BFF;
         }
-        /* Измененные стили */
-        .form-group.checkbox {
-            display: flex;
-            align-items: center;
-        }
-        .form-group.checkbox label {
-            margin-right: 20px; /* Добавлено для отступа */
-        }
-        .form-group.checkbox label:first-child {
-            margin-right: 0; /* Убираем отступ у первого label в .form-group.checkbox */
-        }
-        .login-container { /* Добавленный стиль */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
     </style>
-   
    
 </head>
 <body>
@@ -116,8 +106,9 @@
     <div class="container" id="loginContainer">
 
         <div class="tab-container">
-            <button class="toggle-button active" id="toLoginBtn">Вход</button>
+            <button class="toggle-button" id="toLoginBtn">Вход</button>
             <button class="toggle-button" id="toRegisterBtn">Регистрация</button>
+            <button class="toggle-button" id="toForgotPasswordBtn">Забыли пароль</button>
         </div>
 
         <h2>Вход</h2>
@@ -129,13 +120,13 @@
             <label for="password">Пароль:</label>
             <input type="password" id="password" name="password" required>
         </div>
-        <div class="form-group checkbox">
-            <label for="rememberMe">Запомнить меня</label> <!-- Перемещено слева от чекбокса -->
-            <input type="checkbox" id="rememberMe" name="rememberMe">
-        </div>
-        <button class="btn" id="loginBtn">Войти</button>
         <div class="form-group">
-            <a href="#">Забыли пароль?</a>
+            <input type="checkbox" id="rememberMe" name="rememberMe">
+            <label for="rememberMe">Запомнить меня</label>
+        </div>
+        <button class="btn">Войти</button>
+        <div class="form-group">
+            <a href="#" id="forgotPasswordLink">Забыли пароль?</a>
         </div>
     </div>
 
@@ -143,7 +134,8 @@
 
         <div class="tab-container">
             <button class="toggle-button" id="toLoginBtn">Вход</button>
-            <button class="toggle-button active" id="toRegisterBtn">Регистрация</button>
+            <button class="toggle-button" id="toRegisterBtn">Регистрация</button>
+            <button class="toggle-button" id="toForgotPasswordBtn">Забыли пароль</button>
         </div>
 
         <h2>Регистрация</h2>
@@ -172,43 +164,80 @@
             <input type="password" id="confirmPassword" name="confirmPassword" required>
         </div>
 
-        <button class="btn" id="registerBtn">Зарегистрироваться</button>
+        <button class="btn">Зарегистрироваться</button>
     </div>
 
+    <div class="container" style="display:none;" id="forgotPasswordContainer">
+
+        <div class="tab-container">
+            <button class="toggle-button" id="toLoginBtn">Вход</button>
+            <button class="toggle-button" id="toRegisterBtn">Регистрация</button>
+            <button class="toggle-button active" id="toForgotPasswordBtn">Забыли пароль</button>
+        </div>
+
+        <h2>Забыли пароль</h2>
+        <div class="form-group">
+            <label for="forgotEmail">Почта:</label>
+            <input type="email" id="forgotEmail" name="forgotEmail" required>
+        </div>
+        <button class="btn">Отправить</button>
+    </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const tabButtons = document.querySelectorAll('.toggle-button');
             const loginContainer = document.getElementById('loginContainer');
             const registerContainer = document.getElementById('registerContainer');
-            
-            // Устанавливаем класс 'active' только для одной кнопки
-            tabButtons.forEach(button => {
-                if (button.classList.contains('active')) {
-                    button.classList.remove('active');
-                }
-            });
-            document.getElementById('toLoginBtn').classList.add('active');
-    
+            const forgotPasswordContainer = document.getElementById('forgotPasswordContainer');
+
+            function updateActiveTab(activeButtonId) {
+                tabButtons.forEach(btn => {
+                    if (btn.id === activeButtonId) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+            }
+
+            function showContainer(containerId) {
+                loginContainer.style.display = containerId === 'loginContainer' ? 'block' : 'none';
+                registerContainer.style.display = containerId === 'registerContainer' ? 'block' : 'none';
+                forgotPasswordContainer.style.display = containerId === 'forgotPasswordContainer' ? 'block' : 'none';
+            }
+
+            function saveActiveTab(activeButtonId) {
+                localStorage.setItem('activeTab', activeButtonId);
+            }
+
+            function loadActiveTab() {
+                return localStorage.getItem('activeTab') || 'toLoginBtn';
+            }
+
             tabButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    if (button.id === 'toLoginBtn') {
-                        loginContainer.style.display = 'block';
-                        registerContainer.style.display = 'none';
-                    } else {
-                        loginContainer.style.display = 'none';
-                        registerContainer.style.display = 'block';
-                    }
-    
-                    tabButtons.forEach(btn => {
-                        if (btn.id === button.id) {
-                            btn.classList.add('active');
-                        } else {
-                            btn.classList.remove('active');
-                        }
-                    });
+                    const activeContainerId = button.id === 'toLoginBtn' ? 'loginContainer' : 
+                                              button.id === 'toRegisterBtn' ? 'registerContainer' : 
+                                              'forgotPasswordContainer';
+                    showContainer(activeContainerId);
+                    updateActiveTab(button.id);
+                    saveActiveTab(button.id);
                 });
             });
+
+            document.getElementById('forgotPasswordLink').addEventListener('click', function() {
+                showContainer('forgotPasswordContainer');
+                updateActiveTab('toForgotPasswordBtn');
+                saveActiveTab('toForgotPasswordBtn');
+            });
+
+            // Set initial active tab and container visibility
+            const activeTab = loadActiveTab();
+            const activeContainerId = activeTab === 'toLoginBtn' ? 'loginContainer' : 
+                                      activeTab === 'toRegisterBtn' ? 'registerContainer' : 
+                                      'forgotPasswordContainer';
+            showContainer(activeContainerId);
+            updateActiveTab(activeTab);
         });
     </script>
 

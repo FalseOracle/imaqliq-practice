@@ -6,48 +6,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Управление ВМ</title>
 </head>
+
 <body>
     <div class="vm_buttons">
         <h1>Управление виртуальными машинами</h1>
         
         <div class="button-container">
             <div class="button">
-                <img src="files/vm.svg" width="24" height="24">
+                <img src="files/vm.svg" width="24" height="24" alt="Включить ВМ">
                 <span>Включить ВМ</span>
             </div>
 
             <div class="button">
-                <img src="files/pause.svg" width="24" height="24">
-                <span>Поставить на паузу</span>
+                <img src="files/pause.svg" width="24" height="24" alt="Поставить паузу">
+                <span>Поставить паузу</span>
             </div>
             
             <div class="button">
-                <img src="files/restart.svg" width="24" height="24">
+                <img src="files/restart.svg" width="24" height="24" alt="Перезагрузить ВМ">
                 <span>Перезагрузить ВМ</span>
             </div>
+
             <div class="button">
-                <img src="files/laptop.svg" width="24" height="24">
+                <img src="files/laptop.svg" width="24" height="24" alt="noVNC">
                 <span>noVNC</span>
             </div>
 
             <div class="button">
-                <img src="files/laptop.svg" width="24" height="24">
+                <img src="files/browser.svg" width="24" height="24" alt="Консоль Spice">
                 <span>Консоль Spice</span>
             </div>
 
             <div class="button">
-                <img src="files/wifi.svg" width="24" height="24">
+                <img src="files/cross.svg" width="24" height="24" alt="Тест кнопка">
                 <span>Тест кнопка</span>
             </div>
 
             <div class="button">
-                <img src="files/cross.svg" width="24" height="24">
+                <img src="files/cross.svg" width="24" height="24" alt="Тест кнопка 2">
                 <span>Тест кнопка 2</span>
             </div>
             
+            <div class="button">
+                <img src="files/cross.svg" width="24" height="24" alt="Тест кнопка 2">
+                <span>Тест кнопка 3</span>
+            </div>
+
+            <div class="button">
+                <img src="files/cross.svg" width="24" height="24" alt="Тест кнопка 2">
+                <span>Тест кнопка 4</span>
+            </div>
+
+            <div class="button">
+                <img src="files/cross.svg" width="24" height="24" alt="Тест кнопка 2">
+                <span>Тест кнопка 5</span>
+            </div>
         </div>
     </div>
-    
+
     
     <div class="burger-menu" onclick="toggleSidebar()">
         <img src="files/burger-menu.svg" alt="Menu">
@@ -55,7 +71,7 @@
 
     <div id="mySidebar" class="sidebar">
         <div class="menu-item">
-            <img src="files/virtuals.svg" width="24" height="24">
+            <img src="files/virtuals.svg" width="24" height="24" alt="Виртуальные машины">
             <a href="pages/virtualboxes.html">Виртуальные машины</a>
             <div class="submenu">
                 <a href="#">Создать новую ВМ</a>
@@ -65,7 +81,7 @@
             </div>
         </div>
         <div class="menu-item">
-            <img src="files/database.svg" width="24" height="24">
+            <img src="files/database.svg" width="24" height="24" alt="Узлы">
             <a href="pages/nodes.html">Узлы</a>
             <div class="submenu">
                 <a href="#">Добавить новый узел</a>
@@ -75,7 +91,7 @@
             </div>
         </div>
         <div class="menu-item">
-            <img src="files/wifi.svg" width="24" height="24">
+            <img src="files/wifi.svg" width="24" height="24" alt="Сети">
             <a href="pages/network.html">Сети</a>
             <div class="submenu">
                 <a href="#">Создать новую сеть</a>
@@ -85,7 +101,7 @@
             </div>
         </div>
         <div class="menu-item">
-            <img src="files/cluster.svg" width="24" height="24">
+            <img src="files/cluster.svg" width="24" height="24" alt="Кластеры">
             <a href="pages/clusters.html">Кластеры</a>
             <div class="submenu">
                 <a href="#">Создать новый кластер</a>
@@ -95,7 +111,7 @@
             </div>
         </div>
         <div class="menu-item">
-            <img src="files/document.svg" width="24" height="24">
+            <img src="files/document.svg" width="24" height="24" alt="Скрипты">
             <a href="pages/scripts.html">Скрипты</a>
             <div class="submenu">
                 <a href="#">Добавить новый скрипт</a>
@@ -105,7 +121,7 @@
             </div>
         </div>
         <div class="menu-item">
-            <img src="files/duplicate.svg" width="24" height="24">
+            <img src="files/duplicate.svg" width="24" height="24" alt="Резервные копии">
             <a href="pages/backups.html">Резервные копии</a>
             <div class="submenu">
                 <a href="#">Создать новую резервную копию</a>
@@ -115,7 +131,7 @@
             </div>
         </div>
         <div class="menu-item">
-            <img src="files/settings.svg" width="24" height="24">
+            <img src="files/settings.svg" width="24" height="24" alt="Настройки">
             <a href="pages/settings.html">Настройки</a>
             <div class="submenu">
                 <a href="#">Общие настройки</a>
@@ -175,6 +191,13 @@
         }
     });
 
+</script>
+<script>
+    /* Изменение функции toggleSidebar */
+function toggleSidebar() {
+    var sidebar = document.getElementById("mySidebar");
+    sidebar.classList.toggle('open');
+}
 </script>
 
 </body>
