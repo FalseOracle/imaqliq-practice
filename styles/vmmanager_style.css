@@ -1,205 +1,183 @@
 
 * {
-    font-family: Candara;
+    font-family: Candara; /* Устанавливаем шрифт Candara для всех элементов на странице */
 }
+
 /* Общие стили для body */
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; 
-    margin: 0;
-    background-color: #e9ecef;
-    padding: 0;
-    overflow-x: hidden;
+    display: flex; /* Используем flexbox для выравнивания содержимого */
+    justify-content: center; /* Выравниваем содержимое по горизонтали в центре */
+    align-items: center; /* Выравниваем содержимое по вертикали в центре */
+    height: 100vh; /* Высота body равна высоте окна браузера */
+    margin: 0; /* Убираем отступы по умолчанию */
+    background-color: #e9ecef; /* Устанавливаем цвет фона */
+    padding: 0; /* Убираем внутренние отступы */
+    overflow-x: hidden; /* Отключаем горизонтальную прокрутку */
 }
-/* Стиль кнопок */
-
-
 
 /* Стили для контейнера с кнопками */
 .vm_buttons {
-    text-align: center;
-    background-color: #ffffff;
-    padding: 50px;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(2, 1, 3, 0.4);
-    margin-bottom: 20px; 
+    text-align: center; /* Выравниваем текст по центру */
+    background-color: #ffffff; /* Устанавливаем белый фон */
+    padding: 50px; /* Добавляем внутренние отступы */
+    border-radius: 15px; /* Скругляем углы контейнера */
+    box-shadow: 0 0 10px rgba(2, 1, 3, 0.4); /* Добавляем тень */
+    margin-bottom: 20px; /* Добавляем отступ снизу */
 }
-/* Кнопки которые будут добавленны потом */
-.extras_buttons{
-    align-items: center;
-    text-align: center;
-    background-color: #ffffff;
-    padding: 50px;
-    border-radius: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-    margin-bottom: 20px; /* Add margin at the bottom */
+
+/* Контейнер для кнопок, которые будут добавлены потом */
+.extras_buttons {
+    align-items: center; /* Выравниваем элементы по центру */
+    text-align: center; /* Выравниваем текст по центру */
+    background-color: #ffffff; /* Устанавливаем белый фон */
+    padding: 50px; /* Добавляем внутренние отступы */
+    border-radius: 15px; /* Скругляем углы контейнера */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); /* Добавляем тень */
+    margin-bottom: 20px; /* Добавляем отступ снизу */
 }
 
 /* Просто заголовок */
 h1 {
-    width: 100%;
-    margin-bottom: 20px;
+    width: 100%; /* Устанавливаем ширину в 100% */
+    margin-bottom: 20px; /* Добавляем отступ снизу */
 }
-/* Основные кнопки посередине */
-
-
 
 /* Контейнер для кнопок */
 .button-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+    display: flex; /* Используем flexbox для выравнивания кнопок */
+    flex-wrap: wrap; /* Разрешаем перенос элементов на следующую строку */
+    justify-content: center; /* Выравниваем кнопки по центру */
+    gap: 10px; /* Добавляем зазор между кнопками */
 }
 
 /* Стили для кнопок */
 .button {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    width: calc(20% - 10px); 
-    height: 120px;
-    font-weight: bold;
-    font-size: 16px;
-    color: #fff;
-    background-color: #007BFF;
-    border-radius: 15px;
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(2, 1, 3, 0.2);
-    transition: background-color 0.5s, transform 0.3s;
+    display: flex; /* Используем flexbox для выравнивания содержимого кнопки */
+    align-items: center; /* Выравниваем содержимое по вертикали в центре */
+    flex-direction: column; /* Устанавливаем направление flex-элементов в колонку */
+    justify-content: center; /* Выравниваем содержимое по горизонтали в центре */
+    width: calc(20% - 10px); /* Устанавливаем ширину кнопки с учетом зазора */
+    height: 120px; /* Устанавливаем фиксированную высоту кнопки */
+    font-weight: bold; /* Делаем текст жирным */
+    font-size: 16px; /* Устанавливаем размер шрифта */
+    color: #fff; /* Устанавливаем белый цвет текста */
+    background-color: #007BFF; /* Устанавливаем цвет фона кнопки */
+    border-radius: 15px; /* Скругляем углы кнопки */
+    cursor: pointer; /* Изменяем курсор при наведении на кнопку */
+    box-shadow: 0 0 10px rgba(2, 1, 3, 0); /* Добавляем тень */
+    transition: background-color 0.5s, transform 0.3s; /* Добавляем анимации для изменения фона и трансформации */
 }
 
 /* Стили для кнопок при наведении */
 .button:hover {
-    background-color: #0860bd;
-    transform: scale(1.055);
+    background-color: #0860bd; /* Изменяем цвет фона при наведении */
+    transform: scale(1.055); /* Увеличиваем кнопку при наведении */
 }
-
-/* Стили боковой панели */
-
-
 
 /* Стили для боковой панели */
 .sidebar {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #2788ef;
-    overflow-x: hidden;
-    padding-top: 60px;
-    transition: width 0.3s ease;
+    height: 100%; /* Устанавливаем высоту в 100% */
+    width: 0; /* Изначально ширина боковой панели равна нулю */
+    position: fixed; /* Фиксируем боковую панель на экране */
+    top: 0; /* Устанавливаем позицию сверху */
+    left: 0; /* Устанавливаем позицию слева */
+    background-color: #2788ef; /* Устанавливаем цвет фона */
+    overflow-x: hidden; /* Отключаем горизонтальную прокрутку */
+    padding-top: 60px; /* Добавляем отступ сверху */
+    transition: width 0.3s ease; /* Добавляем анимацию для изменения ширины */
 }
 
 /* Стили для открытой боковой панели */
 .sidebar.open {
-    width: 300px;
+    width: 300px; /* Устанавливаем ширину для открытой боковой панели */
 }
 
 /* Стили для ссылок в боковой панели */
 .sidebar a {
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 18px;
-    color: #ffffff;
-    display: block;
-    transition: background-color 0.3s;
+    padding: 10px 15px; /* Добавляем внутренние отступы */
+    text-decoration: none; /* Убираем подчеркивание текста */
+    font-size: 18px; /* Устанавливаем размер шрифта */
+    color: #ffffff; /* Устанавливаем белый цвет текста */
+    display: block; /* Делаем элемент блочным */
+    transition: background-color 0.3s; /* Добавляем анимацию для изменения фона */
 }
 
 /* Стили для ссылок в боковой панели при наведении */
 .sidebar a:hover {
-    background-color: #0860bd;
+    background-color: #0860bd; /* Изменяем цвет фона при наведении */
 }
+
 /* Стили для пунктов меню */
-
-
-
 .menu-item {
-    margin-bottom: 20px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
-    transition: margin-top 0.3s ease; 
+    margin-bottom: 20px; /* Добавляем отступ снизу */
+    position: relative; /* Устанавливаем относительное позиционирование */
+    display: flex; /* Используем flexbox для выравнивания содержимого */
+    align-items: center; /* Выравниваем содержимое по вертикали в центре */
+    padding-left: 10px; /* Добавляем внутренний отступ слева */
+    transition: margin-top 0.3s ease; /* Добавляем анимацию для изменения верхнего отступа */
 }
 
 /* Стили для изображений в пунктах меню */
 .menu-item img {
-    margin-right: 10px;
+    margin-right: 10px; /* Добавляем отступ справа */
 }
+
 /* Подменю */
 
-
-
-
+/* Изменяем стили для пунктов меню при наведении */
 .menu-item:hover a {
-    background-color: #0860bd;
-    border-radius: 0;
+    background-color: #0860bd; /* Изменяем цвет фона ссылок при наведении */
+    border-radius: 0; /* Убираем скругление углов */
 }
+
 .menu-item:hover {
     margin-top: 20px; /* Сдвигаем остальные пункты вниз */
 }
 
 /* Стили для открытого подменю */
 .menu-item:hover .submenu {
-    max-height: 300px; 
-    opacity: 1;
-    visibility: visible;
+    max-height: 300px; /* Устанавливаем максимальную высоту подменю */
+    opacity: 1; /* Делаем подменю полностью непрозрачным */
+    visibility: visible; /* Делаем подменю видимым */
 }
 
-/* Стили для кнопки которая открывает меню */
-
-
-
+/* Стили для кнопки, которая открывает меню */
 .burger-menu {
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    z-index: 1;
-    cursor: pointer;
+    position: absolute; /* Абсолютное позиционирование */
+    top: 15px; /* Устанавливаем позицию сверху */
+    left: 15px; /* Устанавливаем позицию слева */
+    z-index: 1; /* Устанавливаем индекс слоя */
+    cursor: pointer; /* Изменяем курсор при наведении */
 }
 
 /* Стили для изображения в кнопке бургера */
 .burger-menu img {
-    width: 30px;
-    height: 30px;
+    width: 30px; /* Устанавливаем ширину изображения */
+    height: 30px; /* Устанавливаем высоту изображения */
 }
 
 /* Стили для подменю */
-
-
-
 .submenu {
-    position: absolute;
-    top: 100%; 
-    left: 0;
-    display: block;
-    max-height: 0;
-    opacity: 0;
-    visibility: hidden;
-    overflow: hidden;
-    background-color: #2788ef;
-    width: 100%;
-    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    max-height: 0; /* Изначально высота подменю равна нулю */
+    opacity: 0; /* Изначально подменю прозрачное */
+    visibility: hidden; /* Изначально подменю невидимое */
+    overflow: hidden; /* Отключаем прокрутку */
+    background-color: #2788ef; /* Устанавливаем цвет фона */
+    width: 100%; /* Устанавливаем ширину в 100% */
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Добавляем анимации для подменю */
 }
-
-
 /* Стили для ссылок в подменю */
 .submenu a {
-    font-size: 16px;
-    color: #ffffff;
-    padding: 10px 15px;
-    text-decoration: none;
-    display: block;
-    transition: background-color 0.3s, transform 0.3s;
+    font-size: 16px; /* Устанавливаем размер шрифта */
+    color: #ffffff; /* Устанавливаем белый цвет текста */
+    padding: 10px 15px; /* Добавляем внутренние отступы */
+    text-decoration: none; /* Убираем подчеркивание текста */
+    display: block; /* Делаем элемент блочным */
+    transition: background-color 0.3s, transform 0.3s; /* Добавляем анимации для изменения фона и трансформации */
 }
 
 /* Стили для ссылок в подменю при наведении */
 .submenu a:hover {
-    background-color: #0860bd;
-    transform: translateX(10px);
+    background-color: #0860bd; /* Изменяем цвет фона при наведении */
+    transform: translateX(10px); /* Смещаем элемент вправо при наведении */
 }
