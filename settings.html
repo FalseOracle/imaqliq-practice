@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="styles/settings_style.css"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Настройки сайта</title>
+
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <ul>
+                <li id="text-tab" class="tab active">Текст</li>
+                <li id="color-tab" class="tab">Цвета</li>
+            </ul>
+        </nav>
+        <div class="content">
+            <div id="text-settings" class="settings active">
+                <h2>Настройки текста</h2>
+                <label for="font-family">Шрифт:</label>
+                <select id="font-family">
+                    <option value="Arial">Arial</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Tahoma">Tahoma</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Verdana">Verdana</option>
+                    <option value="Courier New">Courier New</option>
+                    <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
+                    <option value="Palatino Linotype">Palatino Linotype</option>
+                    <option value="Trebuchet MS">Trebuchet MS</option>
+                    <option value="Comic Sans MS">Comic Sans MS</option>
+                </select>
+
+                <label for="font-size">Размер шрифта (px):</label>
+                <input type="number" id="font-size" min="10" max="36" step="1" value="16">
+
+                <label for="line-height">Межстрочный интервал:</label>
+                <input type="number" id="line-height" min="1" max="3" step="0.1" value="1.5">
+
+                <label for="letter-spacing">Межбуквенный интервал (px):</label>
+                <input type="number" id="letter-spacing" min="0" max="10" step="0.5" value="0">
+
+                <label for="text-transform">Преобразование текста:</label>
+                <select id="text-transform">
+                    <option value="none">Нет</option>
+                    <option value="uppercase">Верхний регистр</option>
+                    <option value="lowercase">Нижний регистр</option>
+                    <option value="capitalize">Заглавные буквы</option>
+                </select>
+
+                <label for="text-align">Выравнивание текста:</label>
+                <select id="text-align">
+                    <option value="left">Слева</option>
+                    <option value="center">По центру</option>
+                    <option value="right">Справа</option>
+                    <option value="justify">По ширине</option>
+                </select>
+
+                <button id="apply-text-settings">Применить</button>
+                <button id="reset-text-settings">Сбросить</button>
+            </div>
+            <div id="color-settings" class="settings">
+                <h2>Настройки цвета</h2>
+                <label for="text-color">Цвет текста:</label>
+                <input type="color" id="text-color" value="#000000">
+
+                <label for="background-color">Цвет фона:</label>
+                <input type="color" id="background-color" value="#ffffff">
+
+                <label for="link-color">Цвет ссылок:</label>
+                <input type="color" id="link-color" value="#0000ee">
+
+                <label for="button-color">Цвет кнопок:</label>
+                <input type="color" id="button-color" value="#008cba">
+
+                <button id="apply-color-settings">Применить</button>
+                <button id="reset-color-settings">Сбросить</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const textTab = document.getElementById('text-tab');
+            const colorTab = document.getElementById('color-tab');
+            const textSettings = document.getElementById('text-settings');
+            const colorSettings = document.getElementById('color-settings');
+            const applyTextBtn = document.getElementById('apply-text-settings');
+            const resetTextBtn = document.getElementById('reset-text-settings');
+            const applyColorBtn = document.getElementById('apply-color-settings');
+            const resetColorBtn = document.getElementById('reset-color-settings');
+
+            const textConfig = {
+                'font-family': document.getElementById('font-family'),
+                'font-size': document.getElementById('font-size'),
+                'line-height': document.getElementById('line-height'),
+                'letter-spacing': document.getElementById('letter-spacing'),
+                'text-transform': document.getElementById('text-transform'),
+                'text-align': document.getElementById('text-align')
+            };
+
+            const colorConfig = {
+                'text-color': document.getElementById('text-color'),
+                'background-color': document.getElementById('background-color'),
+                'link-color': document.getElementById('link-color'),
+                'button-color': document.getElementById('button-color')
+            };
+
+            const tabs = {
+                'text-tab': textSettings,
+                'color-tab': colorSettings
+            };
+
+            function switchTab(tabId) {
+                for (const tab in tabs) {
+                    if (tab === tabId) {
+                        tabs[tab].classList.add('active');
+                        document.getElementById(tab).classList.add('active');
+                    } else {
+                        tabs[tab].classList.remove('active');
+                        document.getElementById(tab).classList.remove('active');
+                    }
+                }
+                localStorage.setItem('activeTab', tabId);
+            }
+
+            textTab.addEventListener('click', () => switchTab('text-tab'));
+            colorTab.addEventListener('click', () => switchTab('color-tab'));
+
+            function applyTextSettings() {
+                for (const setting in textConfig) {
+                    document.body.style.setProperty(`--${setting}`, textConfig[setting].value);
+                }
+                saveSettings('textSettings', textConfig);
+            }
+
+            function resetTextSettings() {
+                for (const setting in textConfig) {
+                    textConfig[setting].value = getComputedStyle(document.documentElement).getPropertyValue(`--default-${setting}`).trim();
+                }
+                applyTextSettings();
+            }
+
+            function applyColorSettings() {
+                for (const setting in colorConfig) {
+                    document.documentElement.style.setProperty(`--${setting}`, colorConfig[setting].value);
+                }
+                saveSettings('colorSettings', colorConfig);
+            }
+
+            function resetColorSettings() {
+                for (const setting in colorConfig) {
+                    colorConfig[setting].value = getComputedStyle(document.documentElement).getPropertyValue(`--default-${setting}`).trim();
+                }
+                applyColorSettings();
+            }
+
+            function saveSettings(key, config) {
+                const settings = {};
+                for (const setting in config) {
+                    settings[setting] = config[setting].value;
+                }
+                localStorage.setItem(key, JSON.stringify(settings));
+            }
+
+            function loadSettings() {
+                const activeTab = localStorage.getItem('activeTab');
+                if (activeTab) {
+                    switchTab(activeTab);
+                } else {
+                    switchTab('text-tab');
+                }
+
+                const textSettings = JSON.parse(localStorage.getItem('textSettings'));
+                if (textSettings) {
+                    for (const setting in textSettings) {
+                        textConfig[setting].value = textSettings[setting];
+                    }
+                    applyTextSettings();
+                }
+
+                const colorSettings = JSON.parse(localStorage.getItem('colorSettings'));
+                if (colorSettings) {
+                    for (const setting in colorSettings) {
+                        colorConfig[setting].value = colorSettings[setting];
+                    }
+                    applyColorSettings();
+                }
+            }
+
+            applyTextBtn.addEventListener('click', applyTextSettings);
+            resetTextBtn.addEventListener('click', resetTextSettings);
+            applyColorBtn.addEventListener('click', applyColorSettings);
+            resetColorBtn.addEventListener('click', resetColorSettings);
+
+            loadSettings();
+        });
+    </script>
+</body>
+</html>

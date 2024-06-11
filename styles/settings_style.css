@@ -1,35 +1,109 @@
+:root {
+  --font-family: Arial, sans-serif;
+  --font-size: 16px;
+  --line-height: 1.5;
+  --letter-spacing: 0px;
+  --text-transform: none;
+  --text-align: left;
+  --text-color: #000000;
+  --background-color: #ffffff;
+  --link-color: #0000ee;
+  --button-color: #008cba;
+
+  --default-font-family: Arial, sans-serif;
+  --default-font-size: 16px;
+  --default-line-height: 1.5;
+  --default-letter-spacing: 0px;
+  --default-text-transform: none;
+  --default-text-align: left;
+  --default-text-color: #000000;
+  --default-background-color: #ffffff;
+  --default-link-color: #0000ee;
+  --default-button-color: #008cba;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    transition: background-color 0.5s ease;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .container {
-    max-width: 400px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .color-option {
-    margin-bottom: 20px;
-  }
-  
-  .color-option label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .color-option input[type="color"] {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-  }
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  letter-spacing: var(--letter-spacing);
+  text-transform: var(--text-transform);
+  text-align: var(--text-align);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+a {
+  color: var(--link-color);
+  transition: color 0.3s ease;
+}
+
+button {
+  background-color: var(--button-color);
+  transition: background-color 0.3s ease;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #f4f4f4;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar ul li:hover {
+  background-color: #ddd;
+}
+
+.sidebar ul li.active {
+  background-color: #ccc;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.settings {
+  display: none;
+}
+
+.settings.active {
+  display: block;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input, select {
+  width: 100%;
+  padding: 5px;
+  margin-top: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
