@@ -16,49 +16,29 @@
     body {
         font-family: Arial, sans-serif;
         background-color: #f0f0f0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
         margin: 0;
+    } 
+
+    .container {
+        display: flex;
+        height: 100vh;
     }
-    
+
     .vm_buttons {
         text-align: center;
         background-color: #ffffff;
-        padding: 50px;
-        border-radius: 15px;
         box-shadow: 0 0 10px rgba(2, 1, 3, 0.4);
         margin-bottom: 20px;
-    }
+    padding: 40px; 
+    border-radius: 20px;
+}
+    
     
     .vm-stats {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
-    }
-    
-    .button {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-        width: calc(20% - 10px);
-        height: 120px;
-        font-weight: bold;
-        font-size: 16px;
-        color: #fff;
-        background-color: #2788ef;
-        border-radius: 15px;
-        cursor: pointer;
-        box-shadow: 0 0 10px rgba(2, 1, 3, 0);
-        transition: background-color 0.5s, transform 0.3s;
-    }
-    
-    .button:hover {
-        background-color: #0860bd;
-        transform: scale(1.055);
     }
     
     .sidebar {
@@ -77,6 +57,26 @@
         width: 300px;
     }
     
+    .content {
+        flex-grow: 1;
+        overflow-y: auto;
+    }
+
+    .header {
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .main {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+    }
+
     .sidebar a {
         padding: 10px 15px;
         text-decoration: none;
@@ -177,8 +177,13 @@
     
     .vm-container {
         display: flex;
-        flex-direction: column;
         gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 20px;
+        padding: 0 20px;
+        width: calc(100% - 80px); 
+        margin: 0 auto; 
     }
     
     .vm {
@@ -186,9 +191,10 @@
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         padding: 20px;
-        width: 300px;
+        width: calc(50% - 20px);
         text-align: center;
         transition: transform 0.3s, box-shadow 0.3s;
+        margin-bottom: 20px;
     }
     
     .vm:hover {
@@ -250,27 +256,78 @@
             transform: scale(1.1);
         }
     }
-    </style>
+    
+    .edit-icon {
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+        margin-left: 10px; 
+    }
+    
+    .edit-form {
+        display: none;
+        margin-top: 10px;
+    }
+    
+    .edit-form img {
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+        margin-left: 10px;
+        transition: transform 0.3s ease;
+    }
+    
+    .edit-form img:hover {
+        transform: scale(1.1);
+    }
+    
+    .edit-form.active {
+        display: block;
+    }
+    
+    .vm-realname {
+        font-size: 24px;
+        margin-bottom: 10px;
+        animation: fadeIn 1s ease-in-out;
+        font-family: Candara; 
+    }
+</style>
 <body>
+    <div class="vm_buttons">
 
-<div class="vm_buttons">
+        <div class="vm-container">
 
-    <div class="vm-container">
-        <div class="vm">
-            <h2 id="vm1-name"></h2>
-            <p id="vm1-status">Состояние: <span class="status"></span><img src="" class="status-icon" alt=""></p>
-            <p>Оперативная память: <span class="ram"></span> <span class="unit">ГБ</span> <img src="files/memory.svg" class="memory-icon" alt="RAM"></p>
-            <p>Нагрузка процессора: <span class="cpu"></span> <span class="unit">%</span> <img src="files/cpu.svg" class="cpu-icon" alt="CPU"></p>
+            <div class="vm">
+                <div class="vm-realname" id="vm1-realname">
+                    <span id="real_name_1">ВиртуальнаяМашина1</span>
+                    <img src="files/pencil.svg" class="edit-icon" alt="Изменить" onclick="toggleEdit('vm1')">
+                    <div class="edit-form" id="edit-form-1">
+                        <input type="text" id="edit-input-1">
+                        <img src="files/disk.svg" class="save-icon" alt="Сохранить" onclick="saveName('vm1')">
+                    </div>
+                    
+                </div>
+                <h2 id="vm1-name"></h2>
+                <p id="vm1-status">Состояние: <span class="status"></span><img src="" class="status-icon" alt=""></p>
+                <p>Оперативная память: <span class="ram"></span> <span class="unit">ГБ</span> <img src="files/memory.svg" class="memory-icon" alt="RAM"></p>
+                <p>Нагрузка процессора: <span class="cpu"></span> <span class="unit">%</span> <img src="files/cpu.svg" class="cpu-icon" alt="CPU"></p>
+            </div>
+
+            <div class="vm">
+                <div class="vm-realname" id="vm2-realname">
+                    <span id="real_name_2">ВиртуальнаяМашина2</span>
+                    <img src="files/pencil.svg" class="edit-icon" alt="Изменить" onclick="toggleEdit('vm2')">
+                    <div class="edit-form" id="edit-form-2">
+                        <input type="text" id="edit-input-2">
+                        <img src="files/disk.svg" class="save-icon" alt="Сохранить" onclick="saveName('vm2')">
+                    </div>
+                </div>
+                <h2 id="vm2-name"></h2>
+                <p id="vm2-status">Состояние: <span class="status"></span><img src="" class="status-icon" alt=""></p>
+                <p>Оперативная память: <span class="ram"></span> <span class="unit">ГБ</span> <img src="files/memory.svg" class="memory-icon" alt="RAM"></p>
+                <p>Нагрузка процессора: <span class="cpu"></span> <span class="unit">%</span> <img src="files/cpu.svg" class="cpu-icon" alt="CPU"></p>
+            </div>
         </div>
-        <div class="vm">
-            <h2 id="vm2-name"></h2>
-            <p id="vm2-status">Состояние: <span class="status"></span><img src="" class="status-icon" alt=""></p>
-            <p>Оперативная память: <span class="ram"></span> <span class="unit">ГБ</span> <img src="files/memory.svg" class="memory-icon" alt="RAM"></p>
-            <p>Нагрузка процессора: <span class="cpu"></span> <span class="unit">%</span> <img src="files/cpu.svg" class="cpu-icon" alt="CPU"></p>
-        </div>
-    </div>
-
-    <body>
     
     <div class="burger-menu" onclick="toggleSidebar()">
         <img src="files/burger-menu.svg" alt="Menu">
@@ -425,6 +482,38 @@
     document.querySelectorAll('.vm')[0].querySelector('.cpu').textContent = vm1_cpu;
     document.querySelectorAll('.vm')[1].querySelector('.cpu').textContent = vm2_cpu;
 </script>
+<script>
+    function toggleEdit(vmNumber) {
+    const editForm = document.getElementById(`edit-form-${vmNumber === 'vm1' ? 1 : 2}`);
+    editForm.classList.toggle('active');
+}
 
+function saveName(vmNumber) {
+    const inputField = document.getElementById(`edit-input-${vmNumber === 'vm1' ? 1 : 2}`);
+    const realNameSpan = document.getElementById(`real_name_${vmNumber === 'vm1' ? 1 : 2}`);
+    const newName = inputField.value.trim();
+
+    if (newName !== '') {
+        realNameSpan.textContent = newName;
+        localStorage.setItem(`vm${vmNumber === 'vm1' ? 1 : 2}_real_name`, newName);
+    }
+    toggleEdit(vmNumber);
+}
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Загрузка имен из localStorage
+    const savedName1 = localStorage.getItem('vm1_real_name');
+    const savedName2 = localStorage.getItem('vm2_real_name');
+
+    // Обновление элементов на странице, если имена были сохранены
+    if (savedName1) {
+        document.getElementById('real_name_1').textContent = savedName1;
+    }
+    if (savedName2) {
+        document.getElementById('real_name_2').textContent = savedName2;
+    }
+});
+</script>
 </body>
 </html>

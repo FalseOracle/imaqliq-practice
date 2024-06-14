@@ -1,2 +1,1 @@
 # imaqliq-practice
-## такие пироги
