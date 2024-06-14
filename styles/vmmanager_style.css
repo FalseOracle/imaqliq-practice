@@ -1,11 +1,9 @@
-
 * {
     font-family: Candara; /* Устанавливаем шрифт Candara для всех элементов на странице */
     scrollbar-width: thin; /* Firefox */
     scrollbar-color: #2788ef #e9ecef; /* Firefox */
 }
 
-/* Общие стили для body */
 body {
     display: flex; /* Используем flexbox для выравнивания содержимого */
     justify-content: center; /* Выравниваем содержимое по горизонтали в центре */
@@ -17,7 +15,6 @@ body {
     overflow-x: hidden; /* Отключаем горизонтальную прокрутку */
 }
 
-/* Стили для контейнера с кнопками */
 .vm_buttons {
     text-align: center; /* Выравниваем текст по центру */
     background-color: #ffffff; /* Устанавливаем белый фон */
@@ -27,7 +24,6 @@ body {
     margin-bottom: 20px; /* Добавляем отступ снизу */
 }
 
-/* Контейнер для кнопок, которые будут добавлены потом */
 .extras_buttons {
     align-items: center; /* Выравниваем элементы по центру */
     text-align: center; /* Выравниваем текст по центру */
@@ -38,13 +34,11 @@ body {
     margin-bottom: 20px; /* Добавляем отступ снизу */
 }
 
-/* Просто заголовок */
 h1 {
     width: 100%; /* Устанавливаем ширину в 100% */
     margin-bottom: 20px; /* Добавляем отступ снизу */
 }
 
-/* Контейнер для кнопок */
 .button-container {
     display: flex; /* Используем flexbox для выравнивания кнопок */
     flex-wrap: wrap; /* Разрешаем перенос элементов на следующую строку */
@@ -52,7 +46,6 @@ h1 {
     gap: 10px; /* Добавляем зазор между кнопками */
 }
 
-/* Стили для кнопок */
 .button {
     display: flex; /* Используем flexbox для выравнивания содержимого кнопки */
     align-items: center; /* Выравниваем содержимое по вертикали в центре */
@@ -70,13 +63,11 @@ h1 {
     transition: background-color 0.5s, transform 0.3s; /* Добавляем анимации для изменения фона и трансформации */
 }
 
-/* Стили для кнопок при наведении */
 .button:hover {
     background-color: #0860bd; /* Изменяем цвет фона при наведении */
     transform: scale(1.055); /* Увеличиваем кнопку при наведении */
 }
 
-/* Стили для боковой панели */
 .sidebar {
     height: 100%; /* Устанавливаем высоту в 100% */
     width: 0; /* Изначально ширина боковой панели равна нулю */
@@ -89,12 +80,10 @@ h1 {
     transition: width 0.3s ease; /* Добавляем анимацию для изменения ширины */
 }
 
-/* Стили для открытой боковой панели */
 .sidebar.open {
     width: 300px; /* Устанавливаем ширину для открытой боковой панели */
 }
 
-/* Стили для ссылок в боковой панели */
 .sidebar a {
     padding: 10px 15px; /* Добавляем внутренние отступы */
     text-decoration: none; /* Убираем подчеркивание текста */
@@ -104,12 +93,10 @@ h1 {
     transition: background-color 0.3s; /* Добавляем анимацию для изменения фона */
 }
 
-/* Стили для ссылок в боковой панели при наведении */
 .sidebar a:hover {
     background-color: #0860bd; /* Изменяем цвет фона при наведении */
 }
 
-/* Стили для пунктов меню */
 .menu-item {
     margin-bottom: 20px; /* Добавляем отступ снизу */
     position: relative; /* Устанавливаем относительное позиционирование */
@@ -119,14 +106,10 @@ h1 {
     transition: margin-top 0.3s ease; /* Добавляем анимацию для изменения верхнего отступа */
 }
 
-/* Стили для изображений в пунктах меню */
 .menu-item img {
     margin-right: 10px; /* Добавляем отступ справа */
 }
 
-/* Подменю */
-
-/* Изменяем стили для пунктов меню при наведении */
 .menu-item:hover a {
     background-color: #0860bd; /* Изменяем цвет фона ссылок при наведении */
     border-radius: 0; /* Убираем скругление углов */
@@ -136,14 +119,12 @@ h1 {
     margin-top: 20px; /* Сдвигаем остальные пункты вниз */
 }
 
-/* Стили для открытого подменю */
 .menu-item:hover .submenu {
     max-height: 300px; /* Устанавливаем максимальную высоту подменю */
     opacity: 1; /* Делаем подменю полностью непрозрачным */
     visibility: visible; /* Делаем подменю видимым */
 }
 
-/* Стили для кнопки, которая открывает меню */
 .burger-menu {
     position: absolute; /* Абсолютное позиционирование */
     top: 15px; /* Устанавливаем позицию сверху */
@@ -152,13 +133,11 @@ h1 {
     cursor: pointer; /* Изменяем курсор при наведении */
 }
 
-/* Стили для изображения в кнопке бургера */
 .burger-menu img {
     width: 30px; /* Устанавливаем ширину изображения */
     height: 30px; /* Устанавливаем высоту изображения */
 }
 
-/* Стили для подменю */
 .submenu {
     max-height: 0; /* Изначально высота подменю равна нулю */
     opacity: 0; /* Изначально подменю прозрачное */
@@ -168,7 +147,7 @@ h1 {
     width: 100%; /* Устанавливаем ширину в 100% */
     transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Добавляем анимации для подменю */
 }
-/* Стили для ссылок в подменю */
+
 .submenu a {
     font-size: 16px; /* Устанавливаем размер шрифта */
     color: #ffffff; /* Устанавливаем белый цвет текста */
@@ -178,30 +157,71 @@ h1 {
     transition: background-color 0.3s, transform 0.3s; /* Добавляем анимации для изменения фона и трансформации */
 }
 
-/* Стили для ссылок в подменю при наведении */
 .submenu a:hover {
     background-color: #0860bd; /* Изменяем цвет фона при наведении */
-    transform: translateX(10px); /* Смещаем элемент вправо при наведении */
+    transform: translateX(10px); /* Сдвигаем элемент вправо */
 }
 
-
-/* Стили для полосы прокрутки в веб-кит браузерах (Chrome, Safari) */
-::-webkit-scrollbar {
-    width: 12px;
-    height: 12px;
+.modal-container {
+    display: none; /* Скрываем модальные окна по умолчанию */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Высокий индекс для поверх других элементов */
 }
 
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
+.modal {
+    background-color: #fff; /* Белый фон для модального окна */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 90%;
 }
 
-::-webkit-scrollbar-thumb {
-    background-color: #4CAF50;
-    border-radius: 10px;
-    border: 3px solid #f1f1f1;
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background-color: #45a049;
+.modal-button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-button-yes {
+    background-color: #007bff; /* Синий цвет для кнопки "Да" */
+    color: white;
+}
+
+.modal-button-yes:hover {
+    background-color: #0056b3; /* Темный синий цвет при наведении */
+}
+
+.modal-button-no {
+    background-color: #dc3545; /* Красный цвет для кнопки "Нет" */
+    color: white;
+}
+
+.modal-button-no:hover {
+    background-color: #c82333; /* Темный красный цвет при наведении */
+}
+
+.modal-button-ok {
+    background-color: #28a745; /* Зеленый цвет для кнопки "OK" */
+    color: white;
+}
+
+.modal-button-ok:hover {
+    background-color: #218838; /* Темный зеленый цвет при наведении */
 }

@@ -8,72 +8,89 @@
 </head>
 
 <body>
+    <div class="vm_buttons">
+        <h1>Управление виртуальными машинами</h1>
+        <div class="button-container">
+            <div onclick="showConfirmModal();" class="button">
+                <img src="files/power.svg" width="24" height="24">
+                <span>Включить ВМ</span>
+            </div>
 
-<div class="vm_buttons">
-
-    <h1>Управление виртуальными машинами</h1>
-        
-    <div class="button-container">
-
-        <div onclick="window.location.href='#';" class="button">
-            <img src="files/power.svg" width="24" height="24">
-            <span>Включить ВМ</span>
-        </div>
-
-        <div class="button" onclick="window.location.href='#';"> 
+            <div class="button" onclick="window.location.href='#';">
                 <img src="files/pause.svg" width="24" height="24">
                 <span>Поставить паузу</span>
-        </div>
+            </div>
             
-        <div class="button" onclick="window.location.href='#';"> 
+            <div class="button" onclick="window.location.href='#';">
                 <img src="files/restart.svg" width="24" height="24">
-                <span>Перезагsрузить ВМ</span>
-        </div>
+                <span>Перезагрузить ВМ</span>
+            </div>
 
-        <div class="button" onclick="window.location.href='php/novnc.php';"> 
-            <img src="files/laptop.svg" width="24" height="24"> 
-            <span>noVNC</span> 
-        </div>
+            <div class="button" onclick="window.location.href='php/novnc.php';">
+                <img src="files/laptop.svg" width="24" height="24">
+                <span>noVNC</span>
+            </div>
 
-        <div class="button" onclick="window.location.href='#';"> 
+            <div class="button" onclick="window.location.href='#';">
                 <img src="files/browser.svg" width="24" height="24">
                 <span>Консоль Spice</span>
-        </div>
+            </div>
 
-        <div class="button" onclick="window.location.href='#';"> 
+            <div class="button" onclick="window.location.href='#';">
                 <img src="files/cross.svg" width="24" height="24">
                 <span>Выключить ВМ</span>
-        </div>
+            </div>
 
-        <div class="button" onclick="window.location.href='#';"> 
+            <div class="button" onclick="window.location.href='#';">
                 <img src="files/question.svg" width="24" height="24">
                 <span>Тест кнопка 2</span>
-        </div>
+            </div>
             
-        <div class="button" onclick="window.location.href='#';"> 
+            <div class="button" onclick="window.location.href='#';">
                 <img src="files/question.svg" width="24" height="24">
                 <span>Тест кнопка 3</span>
-        </div>
+            </div>
 
-        <div class="button" onclick="window.location.href='#';"> 
+            <div class="button" onclick="window.location.href='#';">
                 <img src="files/question.svg" width="24" height="24">
                 <span>Тест кнопка 4</span>
-        </div>
+            </div>
 
-        <div class="button" onclick="window.location.href='#';"> 
+            <div class="button" onclick="window.location.href='#';">
                 <img src="files/question.svg" width="24" height="24">
                 <span>Тест кнопка 5</span>
-        </div>
+            </div>
 
-        <div class="button" onclick="window.location.href='#';"> 
+            <div class="button" onclick="window.location.href='#';">
                 <img src="files/question.svg" width="24" height="24">
                 <span>Тест кнопка 5</span>
+            </div>
         </div>
-
-    </div>
     </div>
 
-    
+   
+    <div id="confirmModal" class="modal-container">
+        <div class="modal">
+            <div class="modal-content">
+                <p>Вы точно хотите включить виртуальную машину?</p>
+                <div class="modal-buttons">
+                    <button class="modal-button modal-button-yes" onclick="confirmAction()">Да</button>
+                    <button class="modal-button modal-button-no" onclick="closeConfirmModal()">Нет</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="successModal" class="modal-container">
+        <div class="modal">
+            <div class="modal-content">
+                <p>Виртуальная машина успешно включена!</p>
+                <div class="modal-buttons">
+                    <button class="modal-button modal-button-ok" onclick="closeSuccessModal()">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="burger-menu" onclick="toggleSidebar()">
         <img src="files/burger-menu.svg" alt="Menu">
     </div>
@@ -160,14 +177,40 @@
             </div>
         </div>
     </div>
-
-
+    <script src=”myScript.JavaScript”></script>
     <script>
+        function showConfirmModal() {
+            document.getElementById('confirmModal').style.display = 'flex';
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('confirmModal').style.display = 'none';
+        }
+
+        function confirmAction() {
+            closeConfirmModal();
+            fetch('php/turnon.php')
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById('successModal').style.display = 'flex';
+                    } else {
+                        alert('Произошла ошибка при включении виртуальной машины.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Ошибка:', error);
+                    alert('Произошла ошибка при включении виртуальной машины.');
+                });
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('successModal').style.display = 'none';
+        }
+
         function toggleSidebar() {
             var sidebar = document.getElementById("mySidebar");
             sidebar.classList.toggle('open');
         }
-
 
         document.addEventListener('click', function(event) {
             var isClickInside = document.getElementById('mySidebar').contains(event.target) || document.querySelector('.burger-menu').contains(event.target);
@@ -176,37 +219,94 @@
             }
         });
 
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedBgColor = localStorage.getItem('vmBgColor');
+            const savedTextColor = localStorage.getItem('vmTextColor');
+            const savedButtonColor = localStorage.getItem('vmButtonColor');
+
+            if (savedBgColor) {
+                document.body.style.backgroundColor = savedBgColor;
+            }
+            if (savedTextColor) {
+                document.body.style.color = savedTextColor;
+            }
+            if (savedButtonColor) {
+                document.querySelectorAll('.button').forEach(button => {
+                    button.style.backgroundColor = savedButtonColor;
+                });
+            }
+        });
     </script>
 
+
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedBgColor = localStorage.getItem('vmBgColor');
+            const savedTextColor = localStorage.getItem('vmTextColor');
+            const savedButtonColor = localStorage.getItem('vmButtonColor');
 
-        const savedBgColor = localStorage.getItem('vmBgColor');
-        const savedTextColor = localStorage.getItem('vmTextColor');
-        const savedButtonColor = localStorage.getItem('vmButtonColor');
+            if (savedBgColor) {
+                document.body.style.backgroundColor = savedBgColor;
+            }
+            if (savedTextColor) {
+                document.body.style.color = savedTextColor;
+            }
+            if (savedButtonColor) {
+                document.querySelectorAll('.button').forEach(button => {
+                    button.style.backgroundColor = savedButtonColor;
+                });
+            }
+        });
 
-        if (savedBgColor) {
-            document.body.style.backgroundColor = savedBgColor;
+
+
+
+
+        function showConfirmModal() {
+            document.getElementById('confirmModal').style.display = 'flex';
         }
-        if (savedTextColor) {
-            document.body.style.color = savedTextColor;
+
+        function closeConfirmModal() {
+            document.getElementById('confirmModal').style.display = 'none';
         }
-        if (savedButtonColor) {
-            const buttons = document.querySelectorAll('.button');
-            buttons.forEach(button => {
-                button.style.backgroundColor = savedButtonColor;
-            });
+
+        function confirmAction() {
+            closeConfirmModal();
+            fetch('php/turnon.php')
+                .then(response => {
+                    if (response.ok) {
+                        showSuccessModal();
+                    } else {
+                        alert('Произошла ошибка при включении виртуальной машины.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Ошибка:', error);
+                    alert('Произошла ошибка при включении виртуальной машины.');
+                });
         }
-    });
 
-</script>
-<script>
+        function showSuccessModal() {
+            document.getElementById('successModal').style.display = 'flex';
+        }
 
-function toggleSidebar() {
-    var sidebar = document.getElementById("mySidebar");
-    sidebar.classList.toggle('open');
-}
-</script>
+        function closeSuccessModal() {
+            document.getElementById('successModal').style.display = 'none';
+        }
 
+        function toggleSidebar() {
+            var sidebar = document.getElementById("mySidebar");
+            sidebar.classList.toggle('open');
+        }
+
+        document.addEventListener('click', function(event) {
+            var isClickInside = document.getElementById('mySidebar').contains(event.target) || document.querySelector('.burger-menu').contains(event.target);
+            if (!isClickInside) {
+                document.getElementById('mySidebar').classList.remove('open');
+            }
+        });
+    </script>
+    </script>
 </body>
 </html>
+  
