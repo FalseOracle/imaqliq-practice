@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/vmmanager_style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление ВМ</title>
+</head>
+
+<body>
+
+<div class="vm_buttons">
+
+    <h1>Управление виртуальными машинами</h1>
+        
+    <div class="button-container">
+
+        <div class="button">
+                <img src="files/power.svg" width="24" height="24">
+                <span>Включить ВМ</span>
+        </div>
+
+        <div class="button">
+                <img src="files/pause.svg" width="24" height="24">
+                <span>Поставить паузу</span>
+        </div>
+            
+        <div class="button">
+                <img src="files/restart.svg" width="24" height="24">
+                <span>Перезагрузить ВМ</span>
+        </div>
+
+        <div class="button">
+                <img src="files/laptop.svg" width="24" height="24">
+                <span>noVNC</span>
+        </div>
+
+        <div class="button">
+                <img src="files/browser.svg" width="24" height="24">
+                <span>Консоль Spice</span>
+        </div>
+
+        <div class="button">
+                <img src="files/question.svg" width="24" height="24">
+                <span>Тест кнопка</span>
+        </div>
+
+        <div class="button">
+                <img src="files/question.svg" width="24" height="24">
+                <span>Тест кнопка 2</span>
+        </div>
+            
+        <div class="button">
+                <img src="files/question.svg" width="24" height="24">
+                <span>Тест кнопка 3</span>
+        </div>
+
+        <div class="button">
+                <img src="files/question.svg" width="24" height="24">
+                <span>Тест кнопка 4</span>
+        </div>
+
+        <div class="button">
+                <img src="files/question.svg" width="24" height="24">
+                <span>Тест кнопка 5</span>
+        </div>
+
+        <div class="button">
+                <img src="files/question.svg" width="24" height="24">
+                <span>Тест кнопка 5</span>
+        </div>
+
+    </div>
+    </div>
+
+    
+    <div class="burger-menu" onclick="toggleSidebar()">
+        <img src="files/burger-menu.svg" alt="Menu">
+    </div>
+
+    <div id="mySidebar" class="sidebar">
+        <div class="menu-item">
+            <img src="files/virtuals.svg" width="24" height="24" alt="Виртуальные машины">
+            <a href="pages/virtualboxes.html">Виртуальные машины</a>
+            <div class="submenu">
+                <a href="#">Создать новую ВМ</a>
+                <a href="vmmanager.html">Управление ВМ</a>
+                <a href="#">Настройки ВМ</a>
+                <a href="#">Мониторинг и статистика</a>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="files/database.svg" width="24" height="24" alt="Узлы">
+            <a href="pages/nodes.html">Узлы</a>
+            <div class="submenu">
+                <a href="#">Добавить новый узел</a>
+                <a href="#">Управление узлами</a>
+                <a href="#">Настройки узлов</a>
+                <a href="#">Мониторинг и статистика</a>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="files/wifi.svg" width="24" height="24" alt="Сети">
+            <a href="pages/network.html">Сети</a>
+            <div class="submenu">
+                <a href="#">Создать новую сеть</a>
+                <a href="#">Управление сетями</a>
+                <a href="#">Настройки сетей</a>
+                <a href="#">Мониторинг и статистика</a>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="files/cluster.svg" width="24" height="24" alt="Кластеры">
+            <a href="pages/clusters.html">Кластеры</a>
+            <div class="submenu">
+                <a href="#">Создать новый кластер</a>
+                <a href="#">Управление кластерами</a>
+                <a href="#">Настройки кластеров</a>
+                <a href="#">Мониторинг и статистика</a>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="files/document.svg" width="24" height="24" alt="Скрипты">
+            <a href="pages/scripts.html">Скрипты</a>
+            <div class="submenu">
+                <a href="#">Добавить новый скрипт</a>
+                <a href="#">Управление скриптами</a>
+                <a href="#">Настройки скриптов</a>
+                <a href="#">Мониторинг и статистика</a>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="files/duplicate.svg" width="24" height="24" alt="Резервные копии">
+            <a href="pages/backups.html">Резервные копии</a>
+            <div class="submenu">
+                <a href="#">Создать новую резервную копию</a>
+                <a href="#">Управление резервными копиями</a>
+                <a href="#">Настройки резервных копий</a>
+                <a href="#">Мониторинг и статистика</a>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="files/settings.svg" width="24" height="24" alt="Настройки">
+            <a href="settings.html">Настройки</a>
+            <div class="submenu">
+                <a href="#">Общие настройки</a>
+                <a href="#">Настройки безопасности</a>
+                <a href="#">Настройки уведомлений</a>
+                <a href="#">Настройки интеграций</a>
+            </div>
+        </div>
+        <div class="menu-item">
+            <img src="files/user.svg" width="24" height="24">
+            <a href="pages/privateoffice.html">Личный кабинет</a>
+            <div class="submenu">
+                <a href="#">Изменить профиль</a>
+                <a href="#">Сменить пароль</a>
+                <a href="#">Управление подпиской</a>
+                <a href="#">История платежей</a>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById("mySidebar");
+            sidebar.classList.toggle('open');
+        }
+
+
+        document.addEventListener('click', function(event) {
+            var isClickInside = document.getElementById('mySidebar').contains(event.target) || document.querySelector('.burger-menu').contains(event.target);
+            if (!isClickInside) {
+                document.getElementById('mySidebar').classList.remove('open');
+            }
+        });
+
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        const savedBgColor = localStorage.getItem('vmBgColor');
+        const savedTextColor = localStorage.getItem('vmTextColor');
+        const savedButtonColor = localStorage.getItem('vmButtonColor');
+
+        if (savedBgColor) {
+            document.body.style.backgroundColor = savedBgColor;
+        }
+        if (savedTextColor) {
+            document.body.style.color = savedTextColor;
+        }
+        if (savedButtonColor) {
+            const buttons = document.querySelectorAll('.button');
+            buttons.forEach(button => {
+                button.style.backgroundColor = savedButtonColor;
+            });
+        }
+    });
+
+</script>
+<script>
+
+function toggleSidebar() {
+    var sidebar = document.getElementById("mySidebar");
+    sidebar.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
