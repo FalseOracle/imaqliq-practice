@@ -1,5 +1,0 @@
-{
-    "require": {
-        "zzantares/proxmoxve": "~4.0"
-    }
-}
