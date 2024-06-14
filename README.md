@@ -1,2 +1,2 @@
 # imaqliq-practice
-### stay strong front-end dev....
+### stay proud front-end dev, you are strong ###
